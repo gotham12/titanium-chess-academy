@@ -69,14 +69,14 @@ export const FOUNDER = {
   image: ASSETS.founder,
   tagline: "Tournament-level insight meets classroom-tested instruction for grades K–12.",
   bio: [
-    "My name is Ansh Nandurbarkar, owner of Titanium Chess Academy. I am a recent graduate of Shrewsbury High School and currently study Finance at UMass Amherst. With seven years of competitive chess experience and extensive background teaching students in grades K–12, I bring both tournament-level insight and classroom-tested instruction to every lesson.",
+    "My name is Ansh Nandurbarkar, owner of Titanium Chess Academy. I graduated from Shrewsbury High School (SHS) and now attend UMass Amherst studying Finance. With seven years of competitive chess experience and extensive background teaching students in grades K–12, I bring both tournament-level insight and classroom-tested instruction to every lesson.",
     "My official USCF rating is 1769, placing me in the 92nd percentile nationally. My greatest accomplishment is a tie for 7th place in the Under-1100 section at the 2021 World Open, competing against 117 players.",
     "More importantly, I am passionate about helping students grow not only as chess players, but as thinkers and individuals. My teaching emphasizes critical thinking, confidence, and a genuine enjoyment of the learning process.",
   ],
   credentials: [
-    { label: "World Open '21", value: "Tied 7th · U1100" },
-    { label: "USCF", value: "1769" },
-    { label: "Background", value: "Shrewsbury HS · UMass" },
+    { label: "World Open '21", value: "Tied 7th", subValue: "U1100 · 117 players", animate: false },
+    { label: "USCF", value: "1769", subValue: "92nd percentile", animate: true },
+    { label: "Education", value: "SHS grad", subValue: "Attending Amherst", animate: false },
   ],
 } as const;
 
@@ -117,28 +117,64 @@ export const PROGRAMS = [
     cadence: "Per 2-week session",
     href: "/summer-camp",
     description: "In-person groups. Shrewsbury, MA.",
-    highlights: ["3 days / week", "2 hrs / class", "Jun 27 – Aug 21"],
+    highlights: ["3 days / week", "2 hrs / class", "Jun 29 – Aug 21"],
   },
 ] as const;
 
 export const CAMP_SESSIONS = [
-  { dates: "Jun 27 – Jul 10", status: "I" },
+  { dates: "Jun 29 – Jul 10", status: "I" },
   { dates: "Jul 13 – Jul 24", status: "II" },
   { dates: "Jul 27 – Aug 7", status: "III" },
   { dates: "Aug 10 – Aug 21", status: "IV" },
 ] as const;
 
+export const CAMP_OVERVIEW = {
+  dates: "June 29 – August 21, 2026",
+  format: "2-week sessions · 3 days/week · 2 hours/day",
+  price: "$200 per student",
+  location: "In-person · Shrewsbury, MA",
+  finale: "Class 6 — Tournament + award & certificate ceremony for both tracks",
+} as const;
+
 export const CAMP_LEVELS = [
   {
     title: "Beginner",
     subtitle: "No experience needed",
-    items: ["Rules & pieces", "Basic mates", "Openings & tactics"],
+    items: [
+      "How to move the pieces & material system",
+      "Pins, forks, and skewers",
+      "Basic checkmates (2-move & queen mate)",
+      "Puzzle time, games, and Jeopardy review",
+    ],
   },
   {
-    title: "Advanced",
+    title: "Intermediate / Advanced",
     subtitle: "Prior experience",
-    items: ["Strategy & openings", "Puzzle solving", "Tournament prep"],
+    items: [
+      "Material system & tactical review",
+      "Queen/rook mates & rare mating patterns",
+      "Advanced pawn structures",
+      "Tournament prep & guided gameplay",
+    ],
   },
+] as const;
+
+export const CAMP_BEGINNER_CURRICULUM = [
+  { class: 1, title: "Introduction", topics: ["Introductions", "How to move the pieces", "Piece quiz & reflection"] },
+  { class: 2, title: "Piece Review & Material", topics: ["Piece movement review", "Material system", "Class discussion & quiz"] },
+  { class: 3, title: "Tactics Intro", topics: ["Goal of chess discussion", "Quick puzzle (winner gets candy)", "Pins, forks & skewers", "Students demonstrate on board"] },
+  { class: 4, title: "Checkmates", topics: ["Full review", "2-move mate & queen mate", "Each student demonstrates"] },
+  { class: 5, title: "Review & Games", topics: ["Full review", "3 puzzles", "Students play a game"] },
+  { class: 6, title: "Finale", topics: ["Jeopardy review", "Vote chess teams", "Certificate ceremony"] },
+] as const;
+
+export const CAMP_ADVANCED_CURRICULUM = [
+  { class: 1, title: "Intro & Material", topics: ["Introductions", "Material system discussion", "3 puzzles · casual games"] },
+  { class: 2, title: "Pins & Forks", topics: ["Review quiz", "Pins & forks", "3 puzzles · casual games"] },
+  { class: 3, title: "Mating Patterns", topics: ["Queen & rook mates", "Rare mate patterns", "4 puzzles or casual chess"] },
+  { class: 4, title: "Pawn Structures", topics: ["Review", "Advanced pawn structures", "Puzzle time · casual games"] },
+  { class: 5, title: "Final Review", topics: ["Review & puzzles", "Jeopardy final review", "Everyone plays someone"] },
+  { class: 6, title: "Tournament & Ceremony", topics: ["1.5 hr tournament", "Awards & certificates", "Year-round tutoring info"] },
 ] as const;
 
 export const REVIEWS = [

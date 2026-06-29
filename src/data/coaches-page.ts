@@ -12,7 +12,7 @@ export type CoachProfileData = {
   tagline?: string;
   image: string;
   bio: string | readonly string[];
-  statCards: { label: string; value: string | number; animate?: boolean }[];
+  statCards: { label: string; value: string | number; subValue?: string; animate?: boolean }[];
   highlights?: { icon: keyof typeof HIGHLIGHT_ICONS; title: string; text: string }[];
   pillars?: { icon: keyof typeof PILLAR_ICONS; title: string; text: string }[];
   goalHeading?: string;
@@ -43,11 +43,12 @@ export const anshProfile: CoachProfileData = {
   statCards: FOUNDER.credentials.map((item) => ({
     label: item.label,
     value: item.value,
-    animate: item.label === "USCF",
+    subValue: item.subValue,
+    animate: item.animate ?? false,
   })),
   highlights: [
     { icon: "trophy", title: "World Open 2021", text: "Tied 7th in U1100 · 117 players" },
-    { icon: "award", title: "USCF Rating", text: "1769 · 92nd percentile nationally" },
+    { icon: "award", title: "Education", text: "Graduated SHS · Now attending Amherst" },
   ],
 };
 
@@ -64,7 +65,8 @@ export const advaithProfile: CoachProfileData = {
   bio: COACH.bio,
   statCards: [
     { label: "USCF", value: COACH.rating, animate: true },
-    ...COACH.percentiles.map((p) => ({ label: p.label, value: p.value })),
+    { label: "Worldwide", value: "93rd", subValue: "percentile" },
+    { label: "Massachusetts", value: "86th", subValue: "percentile" },
   ],
   pillars: [
     { icon: "trending", title: "10+ years", text: "Road to National Master." },

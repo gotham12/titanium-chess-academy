@@ -1,6 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import { ASSETS, CONTACT, NAV_LINKS } from "@/data/site-content";
+import { gmailComposeUrl } from "@/lib/contact";
 
 export function Footer() {
   return (
@@ -49,7 +50,12 @@ export function Footer() {
           <p className="text-xs uppercase tracking-[0.28em] text-accent">Contact</p>
           <ul className="mt-5 space-y-3 text-sm text-muted">
             <li>
-              <a href={`mailto:${CONTACT.email}`} className="transition hover:text-foreground">
+              <a
+                href={gmailComposeUrl()}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="transition hover:text-foreground"
+              >
                 {CONTACT.email}
               </a>
             </li>

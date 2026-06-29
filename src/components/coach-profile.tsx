@@ -53,26 +53,27 @@ export function CoachProfileSection({
           </FadeIn>
 
           <div className="space-y-5">
-            <div
-              className={cn(
-                "grid gap-4",
-                profile.statCards.length === 3 ? "sm:grid-cols-3" : "sm:grid-cols-2",
-              )}
-            >
+            <div className="grid grid-cols-1 gap-3 sm:grid-cols-3">
               {profile.statCards.map((stat, i) => (
                 <FadeIn key={stat.label} delay={0.06 + i * 0.05}>
-                  <SpotlightCard className="overflow-hidden p-5 text-center sm:p-6">
-                    <p className="text-[10px] uppercase tracking-[0.15em] text-accent sm:text-xs sm:tracking-[0.2em]">
+                  <SpotlightCard className="flex min-h-[6.5rem] flex-col items-center justify-center overflow-hidden px-3 py-4 text-center sm:min-h-[7rem] sm:px-4 sm:py-5">
+                    <p className="text-[10px] font-semibold uppercase tracking-[0.12em] text-accent sm:text-xs sm:tracking-[0.18em]">
                       {stat.label}
                     </p>
-                    <p
-                      className={cn(
-                        "mt-2 font-display text-3xl font-extrabold tabular-nums sm:text-4xl",
-                        stat.animate ? "text-accent" : "text-foreground",
-                      )}
-                    >
-                      {stat.animate ? <CountUp value={Number(stat.value)} /> : stat.value}
-                    </p>
+                    {stat.animate ? (
+                      <p className="mt-2 font-display text-3xl font-extrabold tabular-nums text-accent sm:text-4xl">
+                        <CountUp value={Number(stat.value)} />
+                      </p>
+                    ) : (
+                      <p className="mt-2 font-display text-lg font-bold leading-tight text-foreground sm:text-xl">
+                        {stat.value}
+                      </p>
+                    )}
+                    {stat.subValue ? (
+                      <p className="mt-1 max-w-[9rem] text-xs leading-snug text-chrome sm:max-w-none sm:text-sm">
+                        {stat.subValue}
+                      </p>
+                    ) : null}
                   </SpotlightCard>
                 </FadeIn>
               ))}

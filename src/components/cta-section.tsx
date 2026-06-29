@@ -4,6 +4,7 @@ import { motion, useInView } from "framer-motion";
 import { useRef } from "react";
 import { Mail } from "lucide-react";
 import { CONTACT, PROMO } from "@/data/site-content";
+import { gmailComposeUrl } from "@/lib/contact";
 import { MagneticButton } from "@/components/ui/magnetic-button";
 
 export function CtaSection() {
@@ -33,13 +34,15 @@ export function CtaSection() {
               <MagneticButton href="/programs" variant="secondary">Programs</MagneticButton>
               <MagneticButton href="/summer-camp" variant="secondary">Summer Camp</MagneticButton>
               <MagneticButton href="/coaches" variant="secondary">Meet the Coaches</MagneticButton>
-              <MagneticButton href={`mailto:${CONTACT.email}`} variant="secondary" external>
+              <MagneticButton href={gmailComposeUrl()} variant="secondary" external>
                 Email
               </MagneticButton>
             </div>
 
             <a
-              href={`mailto:${CONTACT.email}`}
+              href={gmailComposeUrl()}
+              target="_blank"
+              rel="noopener noreferrer"
               className="mt-8 inline-flex items-center gap-2 text-lg text-muted transition hover:text-foreground"
             >
               <Mail className="h-5 w-5" />
