@@ -26,7 +26,7 @@ export function SectionHeading({
     <div
       ref={ref}
       className={cn(
-        align === "center" && "mx-auto max-w-3xl text-center",
+        align === "center" && "mx-auto max-w-4xl text-center",
         className,
       )}
     >
@@ -34,7 +34,7 @@ export function SectionHeading({
         initial={{ opacity: 0, y: 12 }}
         animate={isInView ? { opacity: 1, y: 0 } : {}}
         transition={{ duration: 0.5 }}
-        className="mb-4 text-xs font-semibold uppercase tracking-[0.35em] text-accent"
+        className="mb-4 text-sm font-semibold uppercase tracking-[0.35em] text-accent"
       >
         {eyebrow}
       </motion.p>
@@ -42,7 +42,7 @@ export function SectionHeading({
         initial={{ opacity: 0, y: 20 }}
         animate={isInView ? { opacity: 1, y: 0 } : {}}
         transition={{ duration: 0.6, delay: 0.08 }}
-        className="font-display text-4xl font-bold leading-tight tracking-tight md:text-5xl lg:text-6xl"
+        className="font-display text-5xl font-extrabold leading-[0.95] tracking-tight md:text-6xl lg:text-7xl"
       >
         {title}
       </motion.h2>
@@ -52,7 +52,7 @@ export function SectionHeading({
           animate={isInView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.6, delay: 0.16 }}
           className={cn(
-            "mt-5 max-w-2xl text-base leading-relaxed text-muted md:text-lg",
+            "mt-5 max-w-2xl text-xl text-chrome md:text-2xl",
             align === "center" && "mx-auto",
           )}
         >

@@ -5,6 +5,16 @@ export const ASSETS = {
   coach: {
     advaith: "/advaith-vijayasankaran.png",
   },
+  backgrounds: {
+    home: "/hero-chess-board.png",
+    about: "/hero-chess-pieces.png",
+    programs: "/hero-chess-board.png",
+    summerCamp: "/hero-summer-camp.png",
+    founder: "/hero-chess-pieces.png",
+    coach: "/hero-chess-board.png",
+    reviews: "/hero-chess-pieces.png",
+    register: "/hero-chess-board.png",
+  },
   reviews: {
     aumkar: "https://www.titaniumchessacademy.com/aumkar.jpeg",
     abhiram: "https://www.titaniumchessacademy.com/abhi.jpeg",
@@ -16,8 +26,8 @@ export const NAV_LINKS = [
   { href: "/about", label: "About" },
   { href: "/programs", label: "Programs" },
   { href: "/summer-camp", label: "Summer Camp" },
-  { href: "/coaches/advaith", label: "Meet the Coach" },
   { href: "/founder", label: "Founder" },
+  { href: "/coaches/advaith", label: "Meet the Coach" },
   { href: "/reviews", label: "Reviews" },
 ] as const;
 
@@ -32,19 +42,36 @@ export const PROMO = {
   code: "CHESS",
   discount: "10%",
   deadline: "June 27th",
-  note: "Use promo code CHESS for 10% off when you register by June 27th.",
+  note: "Code CHESS — 10% off by June 27th",
 } as const;
 
 export const STATS = [
-  { value: 20, suffix: "+", label: "Students coached" },
-  { value: 5, suffix: "", label: "Years of instruction" },
-  { value: 1805, suffix: "", label: "Coach USCF rating" },
-  { value: 93, suffix: "rd", label: "Percentile worldwide" },
+  { value: 20, suffix: "+", label: "Students" },
+  { value: 5, suffix: "", label: "Years" },
+  { value: 1805, suffix: "", label: "Coach rating" },
+  { value: 93, suffix: "rd", label: "Percentile" },
 ] as const;
+
+export const FOUNDER = {
+  name: "Ansh Nandurbarkar",
+  username: "AN52007",
+  chessCom: "https://www.chess.com/member/an52007",
+  rating: 1769,
+  image: ASSETS.founder,
+  tagline: "Tournament insight. Classroom-tested instruction.",
+  bio: "Shrewsbury HS · UMass Amherst. Seven years competitive chess. Tied 7th at the 2021 World Open U1100 (117 players). 1769 USCF — 92nd percentile nationally.",
+  credentials: [
+    { label: "World Open '21", value: "7th / 117" },
+    { label: "USCF", value: "1769" },
+    { label: "Percentile", value: "92nd" },
+  ],
+} as const;
 
 export const COACH = {
   name: "Advaith Vijayasankaran",
   slug: "advaith",
+  username: "advaith2011",
+  chessCom: "https://www.chess.com/member/advaith2011",
   title: "Lead Coach",
   rating: 1805,
   ratingType: "Regular",
@@ -53,18 +80,13 @@ export const COACH = {
     { label: "Massachusetts", value: "86th" },
   ],
   experience: "10+ years",
-  goal: "National Master (2200+)",
+  goal: "National Master · 2200+",
   image: ASSETS.coach.advaith,
+  tagline: "Competitive drive. Clear coaching. Real growth.",
   bio: [
-    "I have been playing chess for over ten years, and my ultimate goal is to become a National Master — a highly ambitious target that demands years of hard work, dedication, determination, and grit. To earn the National Master title, a player must reach a rating of 2200 or higher. As a determined and self-motivated student of the game, I am committed to doing everything I can to achieve that milestone.",
-    "That same discipline shapes how I teach. I break down mistakes clearly, explain the reasoning behind every recommendation, and give students practical tools they can use immediately — whether they are learning their first checkmate or preparing for tournament play.",
-    "I am genuinely excited to help the students around me grow. Chess taught me patience, resilience, and how to think several moves ahead; I want to pass that on. At Titanium Chess Academy, I bring competitive experience and a coach's mindset focused on building confident, thoughtful players.",
-  ],
-  highlights: [
-    "1805 USCF Regular rating",
-    "93rd percentile worldwide · 86th in Massachusetts",
-    "10+ years of competitive experience",
-    "Road to National Master — teaching with long-term ambition",
+    "10+ years of chess. Goal: National Master at 2200+. That same grit fuels every lesson.",
+    "I break down mistakes, explain the why, and give tips you can use immediately.",
+    "Excited to help students around me grow — on the board and as thinkers.",
   ],
 } as const;
 
@@ -72,81 +94,58 @@ export const PROGRAMS = [
   {
     title: "Year-Round Lessons",
     price: "$20/hr",
-    cadence: "1 hour · once per week",
+    cadence: "1 hr · weekly",
     href: "/programs",
-    description:
-      "Private or small-group tutoring tailored to each student's level, goals, and learning pace.",
-    highlights: [
-      "Online availability year-round",
-      "Personalized feedback every session",
-      "Beginner through advanced tracks",
-    ],
+    description: "Private & group. All levels.",
+    highlights: ["Online year-round", "Personal feedback", "Beginner → advanced"],
   },
   {
-    title: "Summer Chess Camp",
+    title: "Summer Camp",
     price: "$200",
     cadence: "Per 2-week session",
     href: "/summer-camp",
-    description:
-      "In-person group instruction in the Worcester County area with structured beginner and advanced tracks.",
-    highlights: [
-      "3 days per week · 2 hours per class",
-      "Multiple sessions June 27 – August 21",
-      "Shrewsbury, MA area",
-    ],
+    description: "In-person groups. Shrewsbury, MA.",
+    highlights: ["3 days / week", "2 hrs / class", "Jun 27 – Aug 21"],
   },
 ] as const;
 
 export const CAMP_SESSIONS = [
-  { dates: "June 27 – July 10", status: "Session I" },
-  { dates: "July 13 – July 24", status: "Session II" },
-  { dates: "July 27 – August 7", status: "Session III" },
-  { dates: "August 10 – August 21", status: "Session IV" },
+  { dates: "Jun 27 – Jul 10", status: "I" },
+  { dates: "Jul 13 – Jul 24", status: "II" },
+  { dates: "Jul 27 – Aug 7", status: "III" },
+  { dates: "Aug 10 – Aug 21", status: "IV" },
 ] as const;
 
 export const CAMP_LEVELS = [
   {
-    title: "Beginner Camp",
-    subtitle: "No prior experience required",
-    items: [
-      "Rules of the game",
-      "Piece movement",
-      "Basic checkmates",
-      "Foundational opening and tactical concepts",
-    ],
+    title: "Beginner",
+    subtitle: "No experience needed",
+    items: ["Rules & pieces", "Basic mates", "Openings & tactics"],
   },
   {
-    title: "Advanced Camp",
-    subtitle: "For students with prior experience",
-    items: [
-      "Higher-level strategy and opening ideas",
-      "Challenging puzzles as a group",
-      "Game analysis and guided gameplay",
-      "Tournament preparation",
-    ],
+    title: "Advanced",
+    subtitle: "Prior experience",
+    items: ["Strategy & openings", "Puzzle solving", "Tournament prep"],
   },
 ] as const;
 
 export const REVIEWS = [
   {
-    quote:
-      "Titanium Chess Academy has taught me to become a competitive and confident chess player. The quality of my game has drastically increased since joining Ansh's chess academy.",
+    quote: "Taught me to become a competitive, confident player.",
     name: "Aumkar D.",
-    age: "18 years old",
+    age: "18",
     image: ASSETS.reviews.aumkar,
   },
   {
-    quote:
-      "I have been in this Chess Tutoring service for 5 years, and it's helped me become a better chess player.",
+    quote: "5 years here — helped me become a better player.",
     name: "Abhiram T.",
-    age: "14 years old",
+    age: "14",
     image: ASSETS.reviews.abhiram,
   },
   {
-    quote:
-      "You understand people's mistakes and you explain to them why and you give us helpful tips on how to improve.",
+    quote: "You explain mistakes and give helpful tips to improve.",
     name: "Gaurik J.",
-    age: "8 years old",
+    age: "8",
     image: ASSETS.reviews.gaurik,
   },
 ] as const;
@@ -162,38 +161,53 @@ export const LESSON_OPTIONS = [
 export const PAGE_GATEWAYS = [
   {
     href: "/about",
-    eyebrow: "The Academy",
-    title: "Our Story",
-    description: "Small-scale instruction built on personalized attention and lasting growth.",
+    eyebrow: "Academy",
+    title: "About",
+    description: "Small classes. Big results.",
+    image: ASSETS.backgrounds.about,
   },
   {
     href: "/programs",
     eyebrow: "Year-Round",
     title: "Programs",
-    description: "Private and group lessons tailored to every skill level.",
+    description: "$20/hr · All levels.",
+    image: ASSETS.backgrounds.programs,
   },
   {
     href: "/summer-camp",
     eyebrow: "2026",
     title: "Summer Camp",
-    description: "Four in-person sessions in Shrewsbury, MA.",
+    description: "4 sessions · Shrewsbury.",
+    image: ASSETS.backgrounds.summerCamp,
+  },
+  {
+    href: "/founder",
+    eyebrow: "Leadership",
+    title: "Founder",
+    description: "Ansh · 1769 USCF.",
+    image: ASSETS.backgrounds.founder,
   },
   {
     href: "/coaches/advaith",
     eyebrow: "Coaching",
     title: "Meet the Coach",
-    description: "Learn with Advaith Vijayasankaran — 1805 USCF.",
-  },
-  {
-    href: "/founder",
-    eyebrow: "Leadership",
-    title: "Our Founder",
-    description: "Ansh Nandurbarkar — tournament insight meets classroom instruction.",
+    description: "Advaith · 1805 USCF.",
+    image: ASSETS.backgrounds.coach,
   },
   {
     href: "/reviews",
-    eyebrow: "Community",
+    eyebrow: "Students",
     title: "Reviews",
-    description: "Hear from students and families across grades K–12.",
+    description: "Grades K–12.",
+    image: ASSETS.backgrounds.reviews,
   },
+] as const;
+
+export const QUICK_LINKS = [
+  { href: "/register", label: "Enroll" },
+  { href: "/programs", label: "Programs" },
+  { href: "/summer-camp", label: "Summer Camp" },
+  { href: "/founder", label: "Founder" },
+  { href: "/coaches/advaith", label: "Coach" },
+  { href: "/reviews", label: "Reviews" },
 ] as const;

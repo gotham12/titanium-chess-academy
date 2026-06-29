@@ -3,8 +3,8 @@
 import { motion, useScroll, useTransform } from "framer-motion";
 import Image from "next/image";
 import { useRef } from "react";
-import { MapPin, Sparkles } from "lucide-react";
-import { ASSETS, PROMO } from "@/data/site-content";
+import { Sparkles } from "lucide-react";
+import { ASSETS, PROMO, QUICK_LINKS } from "@/data/site-content";
 import { MagneticButton } from "@/components/ui/magnetic-button";
 import { SplitText } from "@/components/ui/split-text";
 
@@ -22,97 +22,102 @@ export function CinematicHero() {
     <section ref={ref} className="relative min-h-[100svh] overflow-hidden">
       <motion.div style={{ y: imageY }} className="absolute inset-0">
         <Image
-          src={ASSETS.coach.advaith}
-          alt="Titanium Chess Academy coach at tournament"
+          src={ASSETS.backgrounds.home}
+          alt=""
           fill
           priority
-          className="object-cover object-[center_20%]"
+          className="object-cover"
           sizes="100vw"
         />
       </motion.div>
 
-      <div className="absolute inset-0 bg-gradient-to-b from-background/20 via-background/75 to-background" />
+      <div className="absolute inset-0 bg-gradient-to-b from-background/40 via-background/80 to-background" />
       <div className="checker-bg absolute inset-0 opacity-20" />
 
       <motion.div
         style={{ y: logoY }}
-        className="pointer-events-none absolute left-1/2 top-[12%] -translate-x-1/2 opacity-[0.12] md:top-[8%]"
+        className="pointer-events-none absolute right-[8%] top-[15%] hidden opacity-20 lg:block"
       >
-        <div className="relative h-48 w-48 md:h-72 md:w-72 animate-pulse-glow">
+        <div className="relative h-64 w-64 animate-float">
           <Image src={ASSETS.logo} alt="" fill className="object-contain" />
         </div>
       </motion.div>
 
       <motion.div
         style={{ opacity: contentOpacity }}
-        className="relative mx-auto flex min-h-[100svh] max-w-7xl flex-col justify-end px-4 pb-16 pt-32 md:px-8 md:pb-24"
+        className="relative mx-auto flex min-h-[100svh] max-w-7xl flex-col justify-end px-4 pb-16 pt-32 md:px-8 md:pb-20"
       >
         <motion.div
           initial={{ opacity: 0, y: 16 }}
           animate={{ opacity: 1, y: 0 }}
-          className="mb-6 inline-flex w-fit items-center gap-2 rounded-full border border-promo/30 bg-promo/10 px-4 py-2 text-sm text-promo backdrop-blur-md"
+          className="mb-8 inline-flex w-fit items-center gap-2 rounded-full border border-promo/30 bg-promo/10 px-5 py-2.5 text-base font-medium text-promo backdrop-blur-md"
         >
           <Sparkles className="h-4 w-4" />
-          Promo {PROMO.code}: {PROMO.discount} off by {PROMO.deadline}
+          {PROMO.note}
         </motion.div>
 
-        <div className="grid items-end gap-10 lg:grid-cols-[1.15fr_0.85fr]">
-          <div>
-            <SplitText
-              text="Where Strategy Leads To Success"
-              className="font-display text-5xl font-bold leading-[0.92] tracking-tight text-gradient-titanium md:text-7xl lg:text-[5.25rem]"
-            />
-            <motion.p
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.4 }}
-              className="mt-8 max-w-xl text-lg leading-relaxed text-titanium md:text-xl"
-            >
-              Premium chess instruction for grades K–12 — small classes, real
-              progress, and coaches who compete at a high level.
-            </motion.p>
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.55 }}
-              className="mt-10 flex flex-wrap gap-4"
-            >
-              <MagneticButton href="/register">Enroll Now</MagneticButton>
-              <MagneticButton href="/coaches/advaith" variant="secondary">
-                Meet the Coach
-              </MagneticButton>
-            </motion.div>
-          </div>
+        <SplitText
+          text="Where Strategy Leads To Success"
+          className="max-w-5xl font-display text-6xl font-extrabold leading-[0.9] tracking-tight text-gradient-titanium md:text-8xl lg:text-[6.5rem]"
+        />
 
-          <motion.div
-            initial={{ opacity: 0, scale: 0.92, y: 30 }}
-            animate={{ opacity: 1, scale: 1, y: 0 }}
-            transition={{ delay: 0.25, duration: 0.9 }}
-            className="relative mx-auto w-full max-w-sm lg:max-w-none"
-          >
-            <div className="shimmer-border relative overflow-hidden rounded-[2rem] border border-border bg-surface/60 p-6 backdrop-blur-xl">
-              <div className="relative mx-auto h-40 w-40 md:h-48 md:w-48">
-                <Image
-                  src={ASSETS.logo}
-                  alt="Titanium Chess Academy logo"
-                  fill
-                  className="object-contain drop-shadow-[0_0_30px_rgba(74,159,212,0.45)]"
-                  sizes="192px"
-                />
-              </div>
-              <p className="mt-6 text-center font-display text-2xl font-bold">
-                Titanium Chess Academy
-              </p>
-              <p className="mt-2 text-center text-sm text-muted">
-                Shrewsbury, MA · Worcester County
-              </p>
-              <div className="mt-6 flex items-center justify-center gap-2 text-sm text-chrome">
-                <MapPin className="h-4 w-4 text-accent" />
-                In-person camp · Online lessons
-              </div>
-            </div>
-          </motion.div>
-        </div>
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ delay: 0.45 }}
+          className="mt-12 flex flex-wrap gap-4"
+        >
+          <MagneticButton href="/register">Enroll Now</MagneticButton>
+          <MagneticButton href="/programs" variant="secondary">
+            Programs
+          </MagneticButton>
+          <MagneticButton href="/summer-camp" variant="secondary">
+            Summer Camp
+          </MagneticButton>
+          <MagneticButton href="/founder" variant="secondary">
+            Founder
+          </MagneticButton>
+          <MagneticButton href="/coaches/advaith" variant="secondary">
+            Meet the Coach
+          </MagneticButton>
+        </motion.div>
+
+        <motion.div
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ delay: 0.6 }}
+          className="mt-10 flex flex-wrap gap-3"
+        >
+          {QUICK_LINKS.map((link) => (
+            <a
+              key={link.href}
+              href={link.href}
+              className="rounded-full border border-border bg-surface/50 px-5 py-2.5 text-sm font-medium text-chrome backdrop-blur-sm transition hover:border-accent/40 hover:text-accent"
+            >
+              {link.label}
+            </a>
+          ))}
+        </motion.div>
+
+        <motion.div
+          initial={{ opacity: 0, scale: 0.9 }}
+          animate={{ opacity: 1, scale: 1 }}
+          transition={{ delay: 0.3 }}
+          className="mt-14 flex items-center gap-5"
+        >
+          <div className="relative h-20 w-20 shrink-0 md:h-24 md:w-24">
+            <Image
+              src={ASSETS.logo}
+              alt="Titanium Chess Academy"
+              fill
+              className="object-contain drop-shadow-[0_0_30px_rgba(74,159,212,0.5)]"
+              sizes="96px"
+            />
+          </div>
+          <p className="font-display text-2xl font-bold md:text-3xl">
+            Titanium Chess Academy
+          </p>
+        </motion.div>
       </motion.div>
     </section>
   );

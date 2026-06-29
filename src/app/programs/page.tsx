@@ -1,18 +1,17 @@
 import type { Metadata } from "next";
+import Image from "next/image";
 import { Check } from "lucide-react";
 import { SiteShell } from "@/components/site-shell";
 import { PageHero } from "@/components/ui/page-hero";
-import { SectionHeading } from "@/components/ui/section-heading";
 import { SpotlightCard } from "@/components/ui/spotlight-card";
 import { FadeIn } from "@/components/ui/motion-primitives";
 import { MagneticButton } from "@/components/ui/magnetic-button";
 import { CtaSection } from "@/components/cta-section";
-import { PROGRAMS } from "@/data/site-content";
+import { ASSETS, PROGRAMS } from "@/data/site-content";
 
 export const metadata: Metadata = {
   title: "Programs",
-  description:
-    "Year-round private and group chess lessons at $20/hr. Online availability with personalized instruction for all levels.",
+  description: "Year-round chess lessons at $20/hr. All levels.",
 };
 
 export default function ProgramsPage() {
@@ -21,73 +20,54 @@ export default function ProgramsPage() {
   return (
     <SiteShell>
       <PageHero
-        eyebrow="Year-Round Programs"
-        title="Lessons built around you"
-        description="Private or small-group tutoring tailored to each student's level, goals, and learning pace."
-      />
+        eyebrow="Year-Round"
+        title="Lessons"
+        description="$20/hr · 1 hr weekly · All levels."
+        fullBleed
+        image={ASSETS.backgrounds.programs}
+      >
+        <MagneticButton href="/register">Book Now</MagneticButton>
+        <MagneticButton href="/coaches/advaith" variant="secondary">Meet Coach</MagneticButton>
+        <MagneticButton href="/summer-camp" variant="secondary">Summer Camp</MagneticButton>
+      </PageHero>
 
-      <section className="py-24 md:py-32">
+      <section className="py-16 md:py-24">
         <div className="mx-auto max-w-7xl px-4 md:px-8">
-          <div className="grid gap-8 lg:grid-cols-[1fr_0.9fr]">
-            <FadeIn>
-              <SpotlightCard className="p-8 md:p-12">
-                <p className="text-xs uppercase tracking-[0.28em] text-accent">
-                  {lessons.cadence}
-                </p>
-                <h2 className="mt-4 font-display text-5xl font-bold">{lessons.title}</h2>
-                <p className="mt-2 font-display text-4xl font-bold text-accent">
-                  {lessons.price}
-                </p>
-                <p className="mt-6 text-lg leading-relaxed text-muted">
-                  {lessons.description}
-                </p>
-                <ul className="mt-8 space-y-4">
-                  {lessons.highlights.map((item) => (
-                    <li key={item} className="flex items-start gap-3 text-foreground/90">
-                      <span className="mt-0.5 flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-accent-soft text-accent">
-                        <Check className="h-3 w-3" />
-                      </span>
-                      {item}
-                    </li>
-                  ))}
-                </ul>
-                <div className="mt-10">
-                  <MagneticButton href="/register">Book Lessons</MagneticButton>
-                </div>
-              </SpotlightCard>
-            </FadeIn>
+          <FadeIn>
+            <SpotlightCard className="p-10 md:p-14">
+              <p className="text-sm uppercase tracking-[0.3em] text-accent">{lessons.cadence}</p>
+              <h2 className="mt-4 font-display text-6xl font-extrabold md:text-7xl">
+                {lessons.price}
+              </h2>
+              <ul className="mt-10 grid gap-4 sm:grid-cols-3">
+                {lessons.highlights.map((item) => (
+                  <li key={item} className="flex items-center gap-3 text-lg">
+                    <Check className="h-5 w-5 shrink-0 text-accent" />
+                    {item}
+                  </li>
+                ))}
+              </ul>
+              <div className="mt-12 flex flex-wrap gap-4">
+                <MagneticButton href="/register">Enroll</MagneticButton>
+                <MagneticButton href="/founder" variant="secondary">Founder</MagneticButton>
+                <MagneticButton href="/reviews" variant="secondary">Reviews</MagneticButton>
+              </div>
+            </SpotlightCard>
+          </FadeIn>
 
-            <div className="space-y-6">
-              <FadeIn delay={0.08}>
-                <SpotlightCard className="p-8">
-                  <SectionHeading
-                    eyebrow="Also available"
-                    title="Summer Chess Camp"
-                    description="Prefer in-person group instruction? Explore our four 2-week sessions in Shrewsbury, MA."
-                  />
-                  <div className="mt-8">
-                    <MagneticButton href="/summer-camp" variant="secondary">
-                      View Summer Camp
-                    </MagneticButton>
-                  </div>
-                </SpotlightCard>
-              </FadeIn>
-              <FadeIn delay={0.16}>
-                <SpotlightCard className="p-8">
-                  <SectionHeading
-                    eyebrow="Your coach"
-                    title="Learn with Advaith"
-                    description="Meet our lead coach — 1805 USCF, 93rd percentile worldwide, and passionate about helping students grow."
-                  />
-                  <div className="mt-8">
-                    <MagneticButton href="/coaches/advaith" variant="secondary">
-                      Meet the Coach
-                    </MagneticButton>
-                  </div>
-                </SpotlightCard>
-              </FadeIn>
-            </div>
-          </div>
+          <FadeIn delay={0.1}>
+            <SpotlightCard className="relative mt-8 min-h-[240px] overflow-hidden p-0">
+              <Image src={ASSETS.backgrounds.summerCamp} alt="" fill className="object-cover" />
+              <div className="absolute inset-0 bg-background/75" />
+              <div className="relative flex flex-col items-start justify-center p-10 md:p-14">
+                <h3 className="font-display text-5xl font-extrabold">Summer Camp</h3>
+                <p className="mt-2 text-2xl text-chrome">$200 · In-person · Shrewsbury</p>
+                <MagneticButton href="/summer-camp" variant="promo" className="mt-8">
+                  Explore Camp
+                </MagneticButton>
+              </div>
+            </SpotlightCard>
+          </FadeIn>
         </div>
       </section>
 
