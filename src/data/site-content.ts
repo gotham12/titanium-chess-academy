@@ -66,6 +66,7 @@ export const FOUNDER = {
   chessCom: "https://www.chess.com/member/an52007",
   title: "Founder and Head Coach",
   rating: 1769,
+  experience: "7+ years",
   image: ASSETS.founder,
   tagline: "Tournament-level insight meets classroom-tested instruction for grades K–12.",
   bio: [
@@ -101,6 +102,21 @@ export const COACH = {
     "Excited to help students grow on the board and as thinkers — competitive drive, clear coaching, real growth.",
   ],
 } as const;
+
+export const COACHES_HOME = [
+  {
+    name: FOUNDER.name,
+    title: FOUNDER.title,
+    rating: `${FOUNDER.rating} USCF`,
+    experience: FOUNDER.experience,
+  },
+  {
+    name: COACH.name,
+    title: COACH.title,
+    rating: `${COACH.rating} USCF`,
+    experience: COACH.experience,
+  },
+] as const;
 
 export const PROGRAMS = [
   {

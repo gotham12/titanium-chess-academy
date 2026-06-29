@@ -3,7 +3,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import { ArrowRight, Crown, Target, Users } from "lucide-react";
-import { ASSETS, COACH, PROGRAMS, REVIEWS } from "@/data/site-content";
+import { ASSETS, COACHES_HOME, PROGRAMS, REVIEWS } from "@/data/site-content";
 import { FadeIn } from "@/components/ui/motion-primitives";
 import { SectionHeading } from "@/components/ui/section-heading";
 import { SpotlightCard } from "@/components/ui/spotlight-card";
@@ -70,33 +70,72 @@ export function HomeExtendedSections() {
         </div>
       </section>
 
-      <section className="border-y border-border bg-surface/40 py-20 md:py-28">
-        <div className="mx-auto max-w-7xl px-4 md:px-8">
-          <div className="grid items-center gap-12 lg:grid-cols-2">
-            <FadeIn>
-              <div className="relative aspect-[4/5] overflow-hidden rounded-3xl border border-border">
-                <Image
-                  src={COACH.image}
-                  alt={COACH.name}
-                  fill
-                  className="object-cover object-top"
-                  sizes="(max-width: 1024px) 100vw, 480px"
-                />
+      <section className="relative overflow-hidden border-y border-border py-20 md:py-28">
+        <Image
+          src={ASSETS.backgrounds.coach}
+          alt=""
+          fill
+          className="object-cover"
+          sizes="100vw"
+        />
+        <div className="absolute inset-0 bg-gradient-to-b from-background/85 via-background/90 to-background/95" />
+        <div className="checker-bg absolute inset-0 opacity-20" />
+
+        <div className="relative mx-auto max-w-5xl px-4 md:px-8">
+          <FadeIn>
+            <SectionHeading
+              eyebrow="Coaching"
+              title="Meet the Coaches"
+              description="Tournament-tested instruction from two USCF-rated coaches."
+              align="center"
+            />
+          </FadeIn>
+
+          <FadeIn delay={0.08} className="mt-12">
+            <div className="overflow-hidden rounded-2xl border border-border/80 bg-surface/75 backdrop-blur-md">
+              <div className="overflow-x-auto">
+                <table className="w-full min-w-[640px] border-collapse text-left">
+                  <thead>
+                    <tr className="border-b border-border bg-navy-deep/60">
+                      <th className="px-5 py-4 text-xs font-semibold uppercase tracking-[0.2em] text-accent md:px-8 md:py-5">
+                        Coach
+                      </th>
+                      <th className="px-5 py-4 text-xs font-semibold uppercase tracking-[0.2em] text-accent md:px-8 md:py-5">
+                        Title
+                      </th>
+                      <th className="px-5 py-4 text-xs font-semibold uppercase tracking-[0.2em] text-accent md:px-8 md:py-5">
+                        Rating
+                      </th>
+                      <th className="px-5 py-4 text-xs font-semibold uppercase tracking-[0.2em] text-accent md:px-8 md:py-5">
+                        Experience
+                      </th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    {COACHES_HOME.map((coach, i) => (
+                      <tr
+                        key={coach.name}
+                        className={i < COACHES_HOME.length - 1 ? "border-b border-border/70" : undefined}
+                      >
+                        <td className="px-5 py-5 font-display text-lg font-bold md:px-8 md:py-6 md:text-xl">
+                          {coach.name}
+                        </td>
+                        <td className="px-5 py-5 text-chrome md:px-8 md:py-6">{coach.title}</td>
+                        <td className="px-5 py-5 font-semibold tabular-nums text-accent md:px-8 md:py-6">
+                          {coach.rating}
+                        </td>
+                        <td className="px-5 py-5 text-chrome md:px-8 md:py-6">{coach.experience}</td>
+                      </tr>
+                    ))}
+                  </tbody>
+                </table>
               </div>
-            </FadeIn>
-            <FadeIn delay={0.08}>
-              <p className="text-sm uppercase tracking-[0.28em] text-accent">Coaches</p>
-              <h2 className="mt-4 font-display text-5xl font-extrabold md:text-6xl">Ansh & Advaith</h2>
-              <p className="mt-4 text-xl text-chrome">
-                Founder and Head Coach · Coach · {COACH.rating} USCF
-              </p>
-              <p className="mt-6 text-lg leading-relaxed text-chrome">{COACH.bio[0]}</p>
-              <div className="mt-8 flex flex-wrap gap-4">
+              <div className="flex flex-wrap items-center justify-between gap-4 border-t border-border bg-navy-deep/40 px-5 py-5 md:px-8 md:py-6">
+                <p className="text-sm text-muted">Grades K–12 · Shrewsbury, MA</p>
                 <MagneticButton href="/coaches">Meet the Coaches</MagneticButton>
-                <MagneticButton href="/register" variant="secondary">Start enrollment</MagneticButton>
               </div>
-            </FadeIn>
-          </div>
+            </div>
+          </FadeIn>
         </div>
       </section>
 
