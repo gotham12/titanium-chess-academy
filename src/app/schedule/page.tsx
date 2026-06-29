@@ -19,7 +19,7 @@ export default function SchedulePage() {
         title="Pick your times"
         description="3 quick steps. No clutter."
         fullBleed
-        image={ASSETS.backgrounds.programs}
+        image={ASSETS.backgrounds.schedule}
       >
         <MagneticButton href="/register" variant="secondary">Register first</MagneticButton>
       </PageHero>
