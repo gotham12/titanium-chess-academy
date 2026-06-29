@@ -67,12 +67,16 @@ export const FOUNDER = {
   title: "Founder and Head Coach",
   rating: 1769,
   image: ASSETS.founder,
-  tagline: "Tournament insight. Classroom-tested instruction.",
-  bio: "Shrewsbury HS · UMass Amherst. Seven years competitive chess. Tied 7th at the 2021 World Open U1100 (117 players). 1769 USCF — 92nd percentile nationally.",
+  tagline: "Tournament-level insight meets classroom-tested instruction for grades K–12.",
+  bio: [
+    "My name is Ansh Nandurbarkar, owner of Titanium Chess Academy. I am a recent graduate of Shrewsbury High School and currently study Finance at UMass Amherst. With seven years of competitive chess experience and extensive background teaching students in grades K–12, I bring both tournament-level insight and classroom-tested instruction to every lesson.",
+    "My official USCF rating is 1769, placing me in the 92nd percentile nationally. My greatest accomplishment is a tie for 7th place in the Under-1100 section at the 2021 World Open, competing against 117 players.",
+    "More importantly, I am passionate about helping students grow not only as chess players, but as thinkers and individuals. My teaching emphasizes critical thinking, confidence, and a genuine enjoyment of the learning process.",
+  ],
   credentials: [
-    { label: "World Open '21", value: "7th / 117" },
+    { label: "World Open '21", value: "Tied 7th · U1100" },
     { label: "USCF", value: "1769" },
-    { label: "Percentile", value: "92nd" },
+    { label: "Background", value: "Shrewsbury HS · UMass" },
   ],
 } as const;
 

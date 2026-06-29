@@ -46,8 +46,8 @@ export const anshProfile: CoachProfileData = {
     animate: item.label === "USCF",
   })),
   highlights: [
-    { icon: "trophy", title: "World Open '21", text: "7th of 117 · U1100" },
-    { icon: "award", title: "92nd Percentile", text: "Nationally" },
+    { icon: "trophy", title: "World Open 2021", text: "Tied 7th in U1100 · 117 players" },
+    { icon: "award", title: "USCF Rating", text: "1769 · 92nd percentile nationally" },
   ],
 };
 
