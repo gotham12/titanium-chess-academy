@@ -21,9 +21,9 @@ export function MagneticButton({
 }: MagneticButtonProps) {
   const variants = {
     primary:
-      "bg-gold text-background hover:bg-gold-bright shadow-[0_0_40px_rgba(201,169,98,0.25)]",
+      "bg-accent text-background hover:bg-accent-glow shadow-[0_0_40px_rgba(74,159,212,0.35)]",
     secondary:
-      "border border-border bg-surface/60 text-foreground backdrop-blur-md hover:border-gold/40 hover:bg-surface-elevated",
+      "border border-border bg-surface/60 text-foreground backdrop-blur-md hover:border-accent/40 hover:bg-surface-elevated",
     promo:
       "bg-promo text-background hover:brightness-110 shadow-[0_0_40px_rgba(245,197,24,0.2)]",
   };
@@ -39,7 +39,7 @@ export function MagneticButton({
       )}
     >
       <span className="relative z-10">{children}</span>
-      <span className="absolute inset-0 -translate-x-full bg-gradient-to-r from-transparent via-white/20 to-transparent transition-transform duration-700 group-hover:translate-x-full" />
+      <span className="absolute inset-0 -translate-x-full bg-gradient-to-r from-transparent via-white/25 to-transparent transition-transform duration-700 group-hover:translate-x-full" />
     </motion.span>
   );
 

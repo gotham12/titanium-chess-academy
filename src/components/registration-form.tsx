@@ -45,8 +45,8 @@ export function RegistrationForm() {
 
   if (state === "success") {
     return (
-      <div className="rounded-[2rem] border border-gold/30 bg-surface/80 p-10 text-center backdrop-blur-md">
-        <CheckCircle2 className="mx-auto h-12 w-12 text-gold" />
+      <div className="rounded-[2rem] border border-accent/30 bg-surface/80 p-10 text-center backdrop-blur-md">
+        <CheckCircle2 className="mx-auto h-12 w-12 text-accent" />
         <h2 className="mt-6 font-display text-3xl">Registration started</h2>
         <p className="mt-4 text-muted">
           Your email client should open with your details pre-filled. After submitting,
@@ -123,7 +123,7 @@ export function RegistrationForm() {
       <button
         type="submit"
         disabled={state === "submitting"}
-        className="mt-8 inline-flex w-full items-center justify-center gap-2 rounded-full bg-gold px-7 py-4 text-sm font-semibold text-background transition hover:bg-gold-bright disabled:opacity-70 md:w-auto"
+        className="mt-8 inline-flex w-full items-center justify-center gap-2 rounded-full bg-accent px-7 py-4 text-sm font-semibold text-background transition hover:bg-accent-glow disabled:opacity-70 md:w-auto"
       >
         {state === "submitting" ? (
           <>

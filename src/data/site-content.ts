@@ -1,13 +1,25 @@
 export const ASSETS = {
-  logo: "https://www.titaniumchessacademy.com/logo_nbg.png",
+  logo: "/logo.png",
   favicon: "https://www.titaniumchessacademy.com/tab_logo.png",
   founder: "https://www.titaniumchessacademy.com/ansh.jpg",
+  coach: {
+    advaith: "/advaith-vijayasankaran.png",
+  },
   reviews: {
     aumkar: "https://www.titaniumchessacademy.com/aumkar.jpeg",
     abhiram: "https://www.titaniumchessacademy.com/abhi.jpeg",
     gaurik: "https://www.titaniumchessacademy.com/gaurik.jpeg",
   },
 } as const;
+
+export const NAV_LINKS = [
+  { href: "/about", label: "About" },
+  { href: "/programs", label: "Programs" },
+  { href: "/summer-camp", label: "Summer Camp" },
+  { href: "/coaches/advaith", label: "Meet the Coach" },
+  { href: "/founder", label: "Founder" },
+  { href: "/reviews", label: "Reviews" },
+] as const;
 
 export const CONTACT = {
   email: "titaniumchessacademy@gmail.com",
@@ -24,17 +36,44 @@ export const PROMO = {
 } as const;
 
 export const STATS = [
-  { value: "20+", label: "Students coached" },
-  { value: "5", label: "Years of instruction" },
-  { value: "1769", label: "Coach USCF rating" },
-  { value: "92nd", label: "Percentile nationally" },
+  { value: 20, suffix: "+", label: "Students coached" },
+  { value: 5, suffix: "", label: "Years of instruction" },
+  { value: 1805, suffix: "", label: "Coach USCF rating" },
+  { value: 93, suffix: "rd", label: "Percentile worldwide" },
 ] as const;
+
+export const COACH = {
+  name: "Advaith Vijayasankaran",
+  slug: "advaith",
+  title: "Lead Coach",
+  rating: 1805,
+  ratingType: "Regular",
+  percentiles: [
+    { label: "Worldwide", value: "93rd" },
+    { label: "Massachusetts", value: "86th" },
+  ],
+  experience: "10+ years",
+  goal: "National Master (2200+)",
+  image: ASSETS.coach.advaith,
+  bio: [
+    "I have been playing chess for over ten years, and my ultimate goal is to become a National Master — a highly ambitious target that demands years of hard work, dedication, determination, and grit. To earn the National Master title, a player must reach a rating of 2200 or higher. As a determined and self-motivated student of the game, I am committed to doing everything I can to achieve that milestone.",
+    "That same discipline shapes how I teach. I break down mistakes clearly, explain the reasoning behind every recommendation, and give students practical tools they can use immediately — whether they are learning their first checkmate or preparing for tournament play.",
+    "I am genuinely excited to help the students around me grow. Chess taught me patience, resilience, and how to think several moves ahead; I want to pass that on. At Titanium Chess Academy, I bring competitive experience and a coach's mindset focused on building confident, thoughtful players.",
+  ],
+  highlights: [
+    "1805 USCF Regular rating",
+    "93rd percentile worldwide · 86th in Massachusetts",
+    "10+ years of competitive experience",
+    "Road to National Master — teaching with long-term ambition",
+  ],
+} as const;
 
 export const PROGRAMS = [
   {
     title: "Year-Round Lessons",
     price: "$20/hr",
     cadence: "1 hour · once per week",
+    href: "/programs",
     description:
       "Private or small-group tutoring tailored to each student's level, goals, and learning pace.",
     highlights: [
@@ -42,12 +81,12 @@ export const PROGRAMS = [
       "Personalized feedback every session",
       "Beginner through advanced tracks",
     ],
-    accent: "gold",
   },
   {
     title: "Summer Chess Camp",
     price: "$200",
     cadence: "Per 2-week session",
+    href: "/summer-camp",
     description:
       "In-person group instruction in the Worcester County area with structured beginner and advanced tracks.",
     highlights: [
@@ -55,7 +94,6 @@ export const PROGRAMS = [
       "Multiple sessions June 27 – August 21",
       "Shrewsbury, MA area",
     ],
-    accent: "blue",
   },
 ] as const;
 
@@ -119,4 +157,43 @@ export const LESSON_OPTIONS = [
   "Summer Camp (Advanced)",
   "Chess Lessons & Summer Camp (Beginner)",
   "Chess Lessons & Summer Camp (Advanced)",
+] as const;
+
+export const PAGE_GATEWAYS = [
+  {
+    href: "/about",
+    eyebrow: "The Academy",
+    title: "Our Story",
+    description: "Small-scale instruction built on personalized attention and lasting growth.",
+  },
+  {
+    href: "/programs",
+    eyebrow: "Year-Round",
+    title: "Programs",
+    description: "Private and group lessons tailored to every skill level.",
+  },
+  {
+    href: "/summer-camp",
+    eyebrow: "2026",
+    title: "Summer Camp",
+    description: "Four in-person sessions in Shrewsbury, MA.",
+  },
+  {
+    href: "/coaches/advaith",
+    eyebrow: "Coaching",
+    title: "Meet the Coach",
+    description: "Learn with Advaith Vijayasankaran — 1805 USCF.",
+  },
+  {
+    href: "/founder",
+    eyebrow: "Leadership",
+    title: "Our Founder",
+    description: "Ansh Nandurbarkar — tournament insight meets classroom instruction.",
+  },
+  {
+    href: "/reviews",
+    eyebrow: "Community",
+    title: "Reviews",
+    description: "Hear from students and families across grades K–12.",
+  },
 ] as const;

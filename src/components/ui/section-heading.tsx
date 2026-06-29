@@ -34,7 +34,7 @@ export function SectionHeading({
         initial={{ opacity: 0, y: 12 }}
         animate={isInView ? { opacity: 1, y: 0 } : {}}
         transition={{ duration: 0.5 }}
-        className="mb-4 text-xs font-semibold uppercase tracking-[0.35em] text-gold"
+        className="mb-4 text-xs font-semibold uppercase tracking-[0.35em] text-accent"
       >
         {eyebrow}
       </motion.p>
@@ -42,7 +42,7 @@ export function SectionHeading({
         initial={{ opacity: 0, y: 20 }}
         animate={isInView ? { opacity: 1, y: 0 } : {}}
         transition={{ duration: 0.6, delay: 0.08 }}
-        className="font-display text-4xl leading-tight tracking-tight text-foreground md:text-5xl lg:text-6xl"
+        className="font-display text-4xl font-bold leading-tight tracking-tight md:text-5xl lg:text-6xl"
       >
         {title}
       </motion.h2>

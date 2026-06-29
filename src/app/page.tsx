@@ -1,29 +1,16 @@
-import { Navbar } from "@/components/navbar";
-import { Hero } from "@/components/hero";
+import { SiteShell } from "@/components/site-shell";
+import { CinematicHero } from "@/components/cinematic-hero";
 import { MarqueeStats } from "@/components/marquee-stats";
-import { AboutIntro } from "@/components/about-intro";
-import { ProgramsSection } from "@/components/programs-section";
-import { SummerCampPreview } from "@/components/summer-camp-preview";
-import { FounderSection } from "@/components/founder-section";
-import { TestimonialsSection } from "@/components/testimonials-section";
+import { PageGatewayGrid } from "@/components/page-gateway-grid";
 import { CtaSection } from "@/components/cta-section";
-import { Footer } from "@/components/footer";
 
 export default function HomePage() {
   return (
-    <>
-      <Navbar />
-      <main>
-        <Hero />
-        <MarqueeStats />
-        <AboutIntro />
-        <ProgramsSection />
-        <SummerCampPreview />
-        <FounderSection />
-        <TestimonialsSection />
-        <CtaSection />
-      </main>
-      <Footer />
-    </>
+    <SiteShell>
+      <CinematicHero />
+      <MarqueeStats />
+      <PageGatewayGrid />
+      <CtaSection />
+    </SiteShell>
   );
 }

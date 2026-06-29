@@ -17,18 +17,17 @@ export function CtaSection() {
           initial={{ opacity: 0, y: 24 }}
           animate={isInView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.7 }}
-          className="relative overflow-hidden rounded-[2rem] border border-border bg-gradient-to-br from-surface via-surface-elevated to-blue/20 p-10 md:p-16"
+          className="shimmer-border relative overflow-hidden rounded-[2rem] border border-border bg-gradient-to-br from-surface via-surface-elevated to-navy/40 p-10 md:p-16"
         >
-          <div className="absolute -right-16 -top-16 h-56 w-56 rounded-full bg-gold/10 blur-3xl" />
+          <div className="absolute -right-16 -top-16 h-56 w-56 rounded-full bg-accent/10 blur-3xl" />
           <div className="relative max-w-3xl">
-            <p className="text-xs uppercase tracking-[0.35em] text-gold">Ready to begin?</p>
-            <h2 className="mt-4 font-display text-4xl leading-tight md:text-6xl">
+            <p className="text-xs uppercase tracking-[0.35em] text-accent">Ready to begin?</p>
+            <h2 className="mt-4 font-display text-4xl font-bold leading-tight md:text-6xl">
               Small classes. Real progress. Lasting confidence.
             </h2>
             <p className="mt-5 max-w-2xl text-base leading-relaxed text-muted md:text-lg">
-              Titanium Chess Academy has proudly served over 20 students within the past
-              5 years. Register for year-round lessons, summer camp, or both — and use
-              promo code {PROMO.code} for {PROMO.discount} off by {PROMO.deadline}.
+              Register for year-round lessons, summer camp, or both — and use promo code{" "}
+              {PROMO.code} for {PROMO.discount} off by {PROMO.deadline}.
             </p>
 
             <div className="mt-10 flex flex-wrap gap-4">
