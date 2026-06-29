@@ -8,6 +8,7 @@ import { cn } from "@/lib/utils";
 type PageHeroProps = {
   eyebrow: string;
   title: string;
+  titleLines?: string[];
   description?: string;
   image?: string;
   imageAlt?: string;
@@ -18,6 +19,7 @@ type PageHeroProps = {
 export function PageHero({
   eyebrow,
   title,
+  titleLines,
   description,
   image,
   imageAlt = "",
@@ -79,9 +81,21 @@ export function PageHero({
           initial={{ opacity: 0, y: 24 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.65, delay: 0.08 }}
-          className="mt-4 max-w-5xl font-display text-6xl font-extrabold leading-[0.92] tracking-tight text-gradient-titanium md:text-8xl lg:text-[7rem]"
+          className={
+            titleLines
+              ? "mt-4 font-display text-5xl font-extrabold leading-[0.95] tracking-tight text-gradient-titanium sm:text-6xl md:text-7xl lg:text-8xl"
+              : "mt-4 max-w-5xl font-display text-6xl font-extrabold leading-[0.92] tracking-tight text-gradient-titanium md:text-8xl lg:text-[7rem]"
+          }
         >
-          {title}
+          {titleLines ? (
+            titleLines.map((line, i) => (
+              <span key={line} className={cn("block", i === 1 && "text-accent")}>
+                {line}
+              </span>
+            ))
+          ) : (
+            title
+          )}
         </motion.h1>
         {description ? (
           <motion.p

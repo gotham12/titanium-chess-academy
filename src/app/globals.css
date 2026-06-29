@@ -70,6 +70,18 @@ body {
   overflow-x: hidden;
 }
 
+html.custom-cursor-active,
+html.custom-cursor-active * {
+  cursor: none !important;
+}
+
+@media (pointer: coarse) {
+  html.custom-cursor-active,
+  html.custom-cursor-active * {
+    cursor: auto !important;
+  }
+}
+
 ::selection {
   background: rgba(74, 159, 212, 0.35);
   color: #fff;

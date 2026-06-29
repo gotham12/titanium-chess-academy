@@ -28,6 +28,7 @@ export default function CoachPage() {
       <PageHero
         eyebrow="Meet the Coach"
         title={COACH.name}
+        titleLines={["Advaith", "Vijayasankaran"]}
         description={`${COACH.rating} USCF · ${COACH.tagline}`}
         fullBleed
         image={ASSETS.backgrounds.coach}
@@ -59,18 +60,22 @@ export default function CoachPage() {
             <div className="space-y-5">
               <div className="grid gap-4 sm:grid-cols-3">
                 <FadeIn>
-                  <SpotlightCard className="p-6 text-center">
-                    <p className="text-xs uppercase tracking-[0.25em] text-accent">USCF</p>
-                    <p className="mt-3 font-display text-5xl font-extrabold text-accent">
+                  <SpotlightCard className="overflow-hidden p-5 text-center sm:p-6">
+                    <p className="text-xs uppercase tracking-[0.2em] text-accent">USCF</p>
+                    <p className="mt-2 font-display text-3xl font-extrabold tabular-nums text-accent sm:text-4xl">
                       <CountUp value={COACH.rating} />
                     </p>
                   </SpotlightCard>
                 </FadeIn>
                 {COACH.percentiles.map((item, i) => (
                   <FadeIn key={item.label} delay={0.06 + i * 0.05}>
-                    <SpotlightCard className="p-6 text-center">
-                      <p className="text-xs uppercase tracking-[0.25em] text-accent">{item.label}</p>
-                      <p className="mt-3 font-display text-5xl font-extrabold">{item.value}</p>
+                    <SpotlightCard className="overflow-hidden p-5 text-center sm:p-6">
+                      <p className="text-[10px] uppercase tracking-[0.15em] text-accent sm:text-xs sm:tracking-[0.2em]">
+                        {item.label}
+                      </p>
+                      <p className="mt-2 font-display text-3xl font-extrabold tabular-nums sm:text-4xl">
+                        {item.value}
+                      </p>
                     </SpotlightCard>
                   </FadeIn>
                 ))}

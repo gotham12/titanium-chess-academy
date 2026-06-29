@@ -29,14 +29,22 @@ export const NAV_LINKS = [
   { href: "/summer-camp", label: "Summer Camp" },
   { href: "/founder", label: "Founder" },
   { href: "/coaches/advaith", label: "Meet the Coach" },
-  { href: "/schedule", label: "Schedule" },
   { href: "/reviews", label: "Reviews" },
 ] as const;
+
+export const ENROLLMENT = {
+  startPath: "/register",
+  schedulePath: "/schedule",
+  steps: [
+    { step: 1, label: "Register", path: "/register" },
+    { step: 2, label: "Schedule", path: "/schedule" },
+    { step: 3, label: "Confirm", path: null },
+  ],
+} as const;
 
 export const CONTACT = {
   email: "titaniumchessacademy@gmail.com",
   location: "Shrewsbury, MA · Worcester County",
-  schedulePath: "/schedule",
 } as const;
 
 export const PROMO = {
@@ -85,9 +93,8 @@ export const COACH = {
   image: ASSETS.coach.advaith,
   tagline: "Competitive drive. Clear coaching. Real growth.",
   bio: [
-    "10+ years of chess. Goal: National Master at 2200+. That same grit fuels every lesson.",
-    "I break down mistakes, explain the why, and give tips you can use immediately.",
-    "Excited to help students around me grow — on the board and as thinkers.",
+    "10+ years of competitive chess with a National Master goal at 2200+. I break down mistakes, explain the why, and give tips you can use immediately.",
+    "Excited to help students grow on the board and as thinkers — competitive drive, clear coaching, real growth.",
   ],
 } as const;
 
@@ -196,11 +203,11 @@ export const PAGE_GATEWAYS = [
     image: ASSETS.backgrounds.coach,
   },
   {
-    href: "/schedule",
-    eyebrow: "Schedule",
-    title: "Pick Times",
-    description: "3 steps · Done.",
-    image: ASSETS.backgrounds.schedule,
+    href: "/register",
+    eyebrow: "Enroll",
+    title: "Register",
+    description: "Step 1 · Start here.",
+    image: ASSETS.backgrounds.register,
   },
   {
     href: "/reviews",
@@ -215,7 +222,6 @@ export const QUICK_LINKS = [
   { href: "/register", label: "Enroll" },
   { href: "/programs", label: "Programs" },
   { href: "/summer-camp", label: "Summer Camp" },
-  { href: "/schedule", label: "Schedule" },
   { href: "/founder", label: "Founder" },
   { href: "/coaches/advaith", label: "Coach" },
   { href: "/reviews", label: "Reviews" },

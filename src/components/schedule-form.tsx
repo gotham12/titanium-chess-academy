@@ -109,8 +109,8 @@ export function ScheduleForm() {
     return (
       <div className="rounded-[2rem] border border-accent/30 bg-surface/80 p-12 text-center backdrop-blur-md">
         <CheckCircle2 className="mx-auto h-14 w-14 text-accent" />
-        <h2 className="mt-6 font-display text-5xl font-extrabold">Schedule saved</h2>
-        <p className="mt-4 text-xl text-chrome">We&apos;ll email you to confirm.</p>
+        <h2 className="mt-6 font-display text-5xl font-extrabold">Step 3 — All set</h2>
+        <p className="mt-4 text-xl text-chrome">We&apos;ll email you to confirm your enrollment.</p>
         <div className="mt-10 flex flex-wrap justify-center gap-4">
           <MagneticButton href="/">Home</MagneticButton>
           <MagneticButton href="/programs" variant="secondary">Programs</MagneticButton>
@@ -121,6 +121,7 @@ export function ScheduleForm() {
 
   return (
     <form noValidate onSubmit={handleSubmit} className="rounded-[2rem] border border-border bg-surface/80 p-8 backdrop-blur-md md:p-10">
+      <p className="mb-6 text-sm uppercase tracking-[0.28em] text-accent">Step 2 · Schedule</p>
       <div
         className="mb-10 flex gap-3"
         role="progressbar"

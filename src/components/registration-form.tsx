@@ -1,6 +1,7 @@
 "use client";
 
-import { FormEvent, useState } from "react";
+import { FormEvent, useEffect, useState } from "react";
+import { useRouter } from "next/navigation";
 import { CheckCircle2, Loader2 } from "lucide-react";
 import { LESSON_OPTIONS, PROMO } from "@/data/site-content";
 import { MagneticButton } from "@/components/ui/magnetic-button";
@@ -8,10 +9,21 @@ import { MagneticButton } from "@/components/ui/magnetic-button";
 type FormState = "idle" | "submitting" | "success" | "error";
 
 export function RegistrationForm() {
+  const router = useRouter();
   const [state, setState] = useState<FormState>("idle");
   const [errorMsg, setErrorMsg] = useState("");
   const [registrationId, setRegistrationId] = useState("");
   const [savedEmail, setSavedEmail] = useState("");
+
+  const scheduleUrl = `/schedule?email=${encodeURIComponent(savedEmail)}&registrationId=${registrationId}`;
+
+  useEffect(() => {
+    if (state !== "success" || !savedEmail) return;
+    const timer = setTimeout(() => {
+      router.push(scheduleUrl);
+    }, 2200);
+    return () => clearTimeout(timer);
+  }, [state, savedEmail, registrationId, router, scheduleUrl]);
 
   async function handleSubmit(event: FormEvent<HTMLFormElement>) {
     event.preventDefault();
@@ -60,19 +72,16 @@ export function RegistrationForm() {
     return (
       <div className="rounded-[2rem] border border-accent/30 bg-surface/80 p-10 text-center backdrop-blur-md">
         <CheckCircle2 className="mx-auto h-12 w-12 text-accent" />
-        <h2 className="mt-6 font-display text-4xl font-extrabold">You&apos;re in!</h2>
+        <h2 className="mt-6 font-display text-4xl font-extrabold">Step 1 complete</h2>
         <p className="mt-4 text-xl text-chrome">
-          One more step — pick your schedule.
+          Taking you to step 2 — pick your schedule…
         </p>
-        <div className="mt-8 flex flex-wrap justify-center gap-4">
-          <MagneticButton
-            href={`/schedule?email=${encodeURIComponent(savedEmail)}&registrationId=${registrationId}`}
-            variant="promo"
-          >
-            Set Schedule
-          </MagneticButton>
-          <MagneticButton href="/" variant="secondary">
-            Home
+        <div className="mt-6 flex justify-center">
+          <Loader2 className="h-6 w-6 animate-spin text-accent" />
+        </div>
+        <div className="mt-8">
+          <MagneticButton href={scheduleUrl} variant="promo">
+            Continue now
           </MagneticButton>
         </div>
       </div>
@@ -85,8 +94,8 @@ export function RegistrationForm() {
       className="rounded-[2rem] border border-border bg-surface/80 p-8 backdrop-blur-md md:p-10"
     >
       <div className="mb-8">
-        <p className="text-sm uppercase tracking-[0.28em] text-accent">Registration</p>
-        <h2 className="mt-3 font-display text-5xl font-extrabold md:text-6xl">Enroll</h2>
+        <p className="text-sm uppercase tracking-[0.28em] text-accent">Step 1 · Register</p>
+        <h2 className="mt-3 font-display text-4xl font-extrabold md:text-5xl">Your details</h2>
         <p className="mt-4 text-lg text-chrome">
           Code <span className="font-bold text-promo">{PROMO.code}</span> — {PROMO.discount} off
         </p>
@@ -151,7 +160,7 @@ export function RegistrationForm() {
             Saving...
           </>
         ) : (
-          "Submit Registration"
+          "Continue to Schedule →"
         )}
       </button>
     </form>

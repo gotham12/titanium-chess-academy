@@ -38,8 +38,8 @@ export function Footer() {
               </li>
             ))}
             <li>
-              <Link href="/register" className="text-sm text-muted transition hover:text-foreground">
-                Register
+              <Link href="/register" className="text-sm font-semibold text-accent transition hover:text-accent-glow">
+                Enroll
               </Link>
             </li>
           </ul>
@@ -54,11 +54,6 @@ export function Footer() {
               </a>
             </li>
             <li>{CONTACT.location}</li>
-            <li>
-              <Link href={CONTACT.schedulePath} className="transition hover:text-foreground">
-                Schedule preferences
-              </Link>
-            </li>
           </ul>
         </div>
       </div>

@@ -52,9 +52,9 @@ export default function FounderPage() {
 
             <div className="space-y-6">
               <FadeIn delay={0.08}>
-                <SpotlightCard className="p-10 text-center">
+                <SpotlightCard className="overflow-hidden p-10 text-center">
                   <p className="text-sm uppercase tracking-[0.3em] text-accent">USCF</p>
-                  <p className="mt-4 font-display text-7xl font-extrabold text-accent">
+                  <p className="mt-4 font-display text-5xl font-extrabold tabular-nums text-accent sm:text-6xl">
                     <CountUp value={FOUNDER.rating} />
                   </p>
                 </SpotlightCard>
