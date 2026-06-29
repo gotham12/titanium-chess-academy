@@ -87,6 +87,7 @@ export function Navbar() {
           <button
             type="button"
             aria-label="Toggle menu"
+            aria-expanded={open}
             onClick={() => setOpen((value) => !value)}
             className="inline-flex h-11 w-11 items-center justify-center rounded-xl border border-border bg-surface xl:hidden"
           >
@@ -111,7 +112,12 @@ export function Navbar() {
               <Link
                 href={link.href}
                 onClick={() => setOpen(false)}
-                className="font-display text-3xl font-bold"
+                className={cn(
+                  "font-display text-3xl font-bold",
+                  pathname === link.href || pathname.startsWith(link.href + "/")
+                    ? "text-accent"
+                    : "text-foreground",
+                )}
               >
                 {link.label}
               </Link>

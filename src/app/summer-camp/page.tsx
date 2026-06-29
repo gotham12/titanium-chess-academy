@@ -78,8 +78,8 @@ export default function SummerCampPage() {
 
           <div className="mt-12 flex flex-wrap justify-center gap-4">
             <MagneticButton href="/register" variant="promo">Register</MagneticButton>
-            <MagneticButton href={CONTACT.googleForm} variant="secondary" external>
-              Schedule Form
+            <MagneticButton href="/schedule" variant="secondary">
+              Set Schedule
             </MagneticButton>
             <MagneticButton href="/coaches/advaith" variant="secondary">Meet Coach</MagneticButton>
           </div>

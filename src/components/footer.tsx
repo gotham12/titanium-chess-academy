@@ -55,14 +55,9 @@ export function Footer() {
             </li>
             <li>{CONTACT.location}</li>
             <li>
-              <a
-                href={CONTACT.googleForm}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="transition hover:text-foreground"
-              >
-                Schedule preference form
-              </a>
+              <Link href={CONTACT.schedulePath} className="transition hover:text-foreground">
+                Schedule preferences
+              </Link>
             </li>
           </ul>
         </div>

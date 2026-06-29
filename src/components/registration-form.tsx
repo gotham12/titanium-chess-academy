@@ -2,63 +2,77 @@
 
 import { FormEvent, useState } from "react";
 import { CheckCircle2, Loader2 } from "lucide-react";
-import { CONTACT, LESSON_OPTIONS, PROMO } from "@/data/site-content";
+import { LESSON_OPTIONS, PROMO } from "@/data/site-content";
 import { MagneticButton } from "@/components/ui/magnetic-button";
 
-type FormState = "idle" | "submitting" | "success";
+type FormState = "idle" | "submitting" | "success" | "error";
 
 export function RegistrationForm() {
   const [state, setState] = useState<FormState>("idle");
+  const [errorMsg, setErrorMsg] = useState("");
+  const [registrationId, setRegistrationId] = useState("");
+  const [savedEmail, setSavedEmail] = useState("");
 
   async function handleSubmit(event: FormEvent<HTMLFormElement>) {
     event.preventDefault();
     setState("submitting");
+    setErrorMsg("");
 
     const form = event.currentTarget;
     const data = new FormData(form);
 
-    const name = String(data.get("name") ?? "");
-    const email = String(data.get("email") ?? "");
-    const phone = String(data.get("phone") ?? "");
-    const inquiry = String(data.get("inquiry") ?? "");
-    const promo = String(data.get("promo") ?? "");
-    const message = String(data.get("message") ?? "");
+    const payload = {
+      studentName: String(data.get("studentName") ?? ""),
+      parentName: String(data.get("parentName") ?? ""),
+      email: String(data.get("email") ?? ""),
+      phone: String(data.get("phone") ?? ""),
+      program: String(data.get("program") ?? ""),
+      promoCode: String(data.get("promoCode") ?? "") || undefined,
+      message: String(data.get("message") ?? "") || undefined,
+    };
 
-    const subject = encodeURIComponent(`Titanium Chess Academy Registration - ${name}`);
-    const body = encodeURIComponent(
-      [
-        `Name: ${name}`,
-        `Email: ${email}`,
-        `Phone: ${phone}`,
-        `Lesson Option: ${inquiry}`,
-        `Promo Code: ${promo || "None"}`,
-        "",
-        "Message:",
-        message || "N/A",
-      ].join("\n"),
-    );
+    try {
+      const res = await fetch("/api/register", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(payload),
+      });
+      const json = await res.json();
 
-    window.location.href = `mailto:${CONTACT.email}?subject=${subject}&body=${body}`;
+      if (!res.ok) {
+        const details = json.details?.fieldErrors as Record<string, string[]> | undefined;
+        const firstFieldError = details ? Object.values(details).flat()[0] : undefined;
+        setErrorMsg(firstFieldError ?? json.error ?? "Something went wrong");
+        setState("error");
+        return;
+      }
 
-    window.setTimeout(() => setState("success"), 600);
+      setRegistrationId(json.id);
+      setSavedEmail(payload.email);
+      setState("success");
+    } catch {
+      setErrorMsg("Network error. Please try again.");
+      setState("error");
+    }
   }
 
   if (state === "success") {
     return (
       <div className="rounded-[2rem] border border-accent/30 bg-surface/80 p-10 text-center backdrop-blur-md">
         <CheckCircle2 className="mx-auto h-12 w-12 text-accent" />
-        <h2 className="mt-6 font-display text-3xl">Registration started</h2>
-        <p className="mt-4 text-muted">
-          Your email client should open with your details pre-filled. After submitting,
-          please complete the schedule preference Google Form so we can find dates and
-          times that work best.
+        <h2 className="mt-6 font-display text-4xl font-extrabold">You&apos;re in!</h2>
+        <p className="mt-4 text-xl text-chrome">
+          One more step — pick your schedule.
         </p>
         <div className="mt-8 flex flex-wrap justify-center gap-4">
-          <MagneticButton href={CONTACT.googleForm} variant="promo" external>
-            Open Google Form
+          <MagneticButton
+            href={`/schedule?email=${encodeURIComponent(savedEmail)}&registrationId=${registrationId}`}
+            variant="promo"
+          >
+            Set Schedule
           </MagneticButton>
           <MagneticButton href="/" variant="secondary">
-            Back to Home
+            Home
           </MagneticButton>
         </div>
       </div>
@@ -71,31 +85,37 @@ export function RegistrationForm() {
       className="rounded-[2rem] border border-border bg-surface/80 p-8 backdrop-blur-md md:p-10"
     >
       <div className="mb-8">
-        <p className="text-xs uppercase tracking-[0.28em] text-gold">Registration</p>
-        <h1 className="mt-3 font-display text-4xl md:text-5xl">Enroll with Titanium</h1>
-        <p className="mt-4 text-muted">
-          Use promo code <span className="font-semibold text-promo">{PROMO.code}</span> for{" "}
-          {PROMO.discount} off by {PROMO.deadline}.
+        <p className="text-sm uppercase tracking-[0.28em] text-accent">Registration</p>
+        <h2 className="mt-3 font-display text-5xl font-extrabold md:text-6xl">Enroll</h2>
+        <p className="mt-4 text-lg text-chrome">
+          Code <span className="font-bold text-promo">{PROMO.code}</span> — {PROMO.discount} off
         </p>
       </div>
 
+      {state === "error" && (
+        <p role="alert" className="mb-6 rounded-xl border border-red-500/30 bg-red-500/10 px-4 py-3 text-sm text-red-300">
+          {errorMsg}
+        </p>
+      )}
+
       <div className="grid gap-5 md:grid-cols-2">
-        <Field label="Name" name="name" required />
+        <Field label="Student Name" name="studentName" required />
+        <Field label="Parent / Guardian Name" name="parentName" required />
         <Field label="Email" name="email" type="email" required />
-        <Field label="Phone Number" name="phone" type="tel" required />
-        <div>
-          <label htmlFor="inquiry" className="mb-2 block text-sm text-muted">
-            Lesson Options
+        <Field label="Phone" name="phone" type="tel" required />
+        <div className="md:col-span-2">
+          <label htmlFor="program" className="mb-2 block text-sm text-muted">
+            Program
           </label>
           <select
-            id="inquiry"
-            name="inquiry"
+            id="program"
+            name="program"
             required
             defaultValue=""
-            className="w-full rounded-xl border border-border bg-background/70 px-4 py-3 text-foreground outline-none transition focus:border-gold/50"
+            className="w-full rounded-xl border border-border bg-background/70 px-4 py-3.5 text-lg outline-none transition focus:border-accent/50 focus:ring-2 focus:ring-accent/30"
           >
             <option value="" disabled>
-              Select an option
+              Select program
             </option>
             {LESSON_OPTIONS.map((option) => (
               <option key={option} value={option}>
@@ -104,31 +124,31 @@ export function RegistrationForm() {
             ))}
           </select>
         </div>
-        <Field label="Promo Code" name="promo" placeholder="CHESS" />
+        <Field label="Promo Code" name="promoCode" placeholder="CHESS" />
       </div>
 
       <div className="mt-5">
         <label htmlFor="message" className="mb-2 block text-sm text-muted">
-          Message
+          Notes (optional)
         </label>
         <textarea
           id="message"
           name="message"
-          rows={4}
-          className="w-full rounded-xl border border-border bg-background/70 px-4 py-3 text-foreground outline-none transition focus:border-gold/50"
-          placeholder="Tell us about the student's experience level, preferred schedule, or any questions."
+          rows={3}
+          className="w-full rounded-xl border border-border bg-background/70 px-4 py-3 text-lg outline-none transition focus:border-accent/50 focus:ring-2 focus:ring-accent/30"
+          placeholder="Experience level, questions..."
         />
       </div>
 
       <button
         type="submit"
         disabled={state === "submitting"}
-        className="mt-8 inline-flex w-full items-center justify-center gap-2 rounded-full bg-accent px-7 py-4 text-sm font-semibold text-background transition hover:bg-accent-glow disabled:opacity-70 md:w-auto"
+        className="mt-8 inline-flex w-full items-center justify-center gap-2 rounded-full bg-accent px-7 py-4 text-base font-semibold text-background transition hover:bg-accent-glow disabled:opacity-70 md:w-auto"
       >
         {state === "submitting" ? (
           <>
             <Loader2 className="h-4 w-4 animate-spin" />
-            Opening email...
+            Saving...
           </>
         ) : (
           "Submit Registration"
@@ -162,7 +182,7 @@ function Field({
         type={type}
         required={required}
         placeholder={placeholder}
-        className="w-full rounded-xl border border-border bg-background/70 px-4 py-3 text-foreground outline-none transition focus:border-gold/50"
+        className="w-full rounded-xl border border-border bg-background/70 px-4 py-3.5 text-lg outline-none transition focus:border-accent/50 focus:ring-2 focus:ring-accent/30"
       />
     </div>
   );

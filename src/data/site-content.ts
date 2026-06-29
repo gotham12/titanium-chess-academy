@@ -28,14 +28,14 @@ export const NAV_LINKS = [
   { href: "/summer-camp", label: "Summer Camp" },
   { href: "/founder", label: "Founder" },
   { href: "/coaches/advaith", label: "Meet the Coach" },
+  { href: "/schedule", label: "Schedule" },
   { href: "/reviews", label: "Reviews" },
 ] as const;
 
 export const CONTACT = {
   email: "titaniumchessacademy@gmail.com",
   location: "Shrewsbury, MA · Worcester County",
-  googleForm:
-    "https://docs.google.com/forms/d/e/1FAIpQLScin0VCcVme9fAoKYvGm0mEPnsFE26jMJaUa_xZ-togLddf6w/viewform?usp=publish-editor",
+  schedulePath: "/schedule",
 } as const;
 
 export const PROMO = {
@@ -195,6 +195,13 @@ export const PAGE_GATEWAYS = [
     image: ASSETS.backgrounds.coach,
   },
   {
+    href: "/schedule",
+    eyebrow: "Schedule",
+    title: "Pick Times",
+    description: "3 steps · Done.",
+    image: ASSETS.backgrounds.programs,
+  },
+  {
     href: "/reviews",
     eyebrow: "Students",
     title: "Reviews",
@@ -207,6 +214,7 @@ export const QUICK_LINKS = [
   { href: "/register", label: "Enroll" },
   { href: "/programs", label: "Programs" },
   { href: "/summer-camp", label: "Summer Camp" },
+  { href: "/schedule", label: "Schedule" },
   { href: "/founder", label: "Founder" },
   { href: "/coaches/advaith", label: "Coach" },
   { href: "/reviews", label: "Reviews" },
