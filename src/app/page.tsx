@@ -1,6 +1,7 @@
 import { Navbar } from "@/components/navbar";
 import { Hero } from "@/components/hero";
 import { MarqueeStats } from "@/components/marquee-stats";
+import { AboutIntro } from "@/components/about-intro";
 import { ProgramsSection } from "@/components/programs-section";
 import { SummerCampPreview } from "@/components/summer-camp-preview";
 import { FounderSection } from "@/components/founder-section";
@@ -15,6 +16,7 @@ export default function HomePage() {
       <main>
         <Hero />
         <MarqueeStats />
+        <AboutIntro />
         <ProgramsSection />
         <SummerCampPreview />
         <FounderSection />
