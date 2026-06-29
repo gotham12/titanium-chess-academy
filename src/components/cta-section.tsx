@@ -32,8 +32,7 @@ export function CtaSection() {
               <MagneticButton href="/register">Enroll</MagneticButton>
               <MagneticButton href="/programs" variant="secondary">Programs</MagneticButton>
               <MagneticButton href="/summer-camp" variant="secondary">Summer Camp</MagneticButton>
-              <MagneticButton href="/founder" variant="secondary">Founder</MagneticButton>
-              <MagneticButton href="/coaches/advaith" variant="secondary">Coach</MagneticButton>
+              <MagneticButton href="/coaches" variant="secondary">Meet the Coaches</MagneticButton>
               <MagneticButton href={`mailto:${CONTACT.email}`} variant="secondary" external>
                 Email
               </MagneticButton>

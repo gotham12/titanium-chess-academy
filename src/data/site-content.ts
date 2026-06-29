@@ -27,8 +27,7 @@ export const NAV_LINKS = [
   { href: "/about", label: "About" },
   { href: "/programs", label: "Programs" },
   { href: "/summer-camp", label: "Summer Camp" },
-  { href: "/founder", label: "Founder" },
-  { href: "/coaches/advaith", label: "Meet the Coach" },
+  { href: "/coaches", label: "Meet the Coaches" },
   { href: "/reviews", label: "Reviews" },
 ] as const;
 
@@ -65,6 +64,7 @@ export const FOUNDER = {
   name: "Ansh Nandurbarkar",
   username: "AN52007",
   chessCom: "https://www.chess.com/member/an52007",
+  title: "Founder and Head Coach",
   rating: 1769,
   image: ASSETS.founder,
   tagline: "Tournament insight. Classroom-tested instruction.",
@@ -81,7 +81,7 @@ export const COACH = {
   slug: "advaith",
   username: "advaith2011",
   chessCom: "https://www.chess.com/member/advaith2011",
-  title: "Lead Coach",
+  title: "Coach",
   rating: 1805,
   ratingType: "Regular",
   percentiles: [
@@ -189,17 +189,10 @@ export const PAGE_GATEWAYS = [
     image: ASSETS.backgrounds.summerCamp,
   },
   {
-    href: "/founder",
-    eyebrow: "Leadership",
-    title: "Founder",
-    description: "Ansh · 1769 USCF.",
-    image: ASSETS.backgrounds.founder,
-  },
-  {
-    href: "/coaches/advaith",
+    href: "/coaches",
     eyebrow: "Coaching",
-    title: "Meet the Coach",
-    description: "Advaith · 1805 USCF.",
+    title: "Meet the Coaches",
+    description: "Ansh · Advaith · USCF rated.",
     image: ASSETS.backgrounds.coach,
   },
   {
@@ -222,7 +215,6 @@ export const QUICK_LINKS = [
   { href: "/register", label: "Enroll" },
   { href: "/programs", label: "Programs" },
   { href: "/summer-camp", label: "Summer Camp" },
-  { href: "/founder", label: "Founder" },
-  { href: "/coaches/advaith", label: "Coach" },
+  { href: "/coaches", label: "Coaches" },
   { href: "/reviews", label: "Reviews" },
 ] as const;

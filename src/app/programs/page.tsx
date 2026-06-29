@@ -27,7 +27,7 @@ export default function ProgramsPage() {
         image={ASSETS.backgrounds.programs}
       >
         <MagneticButton href="/register">Book Now</MagneticButton>
-        <MagneticButton href="/coaches/advaith" variant="secondary">Meet Coach</MagneticButton>
+        <MagneticButton href="/coaches" variant="secondary">Meet the Coaches</MagneticButton>
         <MagneticButton href="/summer-camp" variant="secondary">Summer Camp</MagneticButton>
       </PageHero>
 
@@ -49,7 +49,7 @@ export default function ProgramsPage() {
               </ul>
               <div className="mt-12 flex flex-wrap gap-4">
                 <MagneticButton href="/register">Enroll</MagneticButton>
-                <MagneticButton href="/founder" variant="secondary">Founder</MagneticButton>
+                <MagneticButton href="/coaches" variant="secondary">Meet the Coaches</MagneticButton>
                 <MagneticButton href="/reviews" variant="secondary">Reviews</MagneticButton>
               </div>
             </SpotlightCard>

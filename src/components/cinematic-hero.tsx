@@ -74,11 +74,8 @@ export function CinematicHero() {
           <MagneticButton href="/summer-camp" variant="secondary">
             Summer Camp
           </MagneticButton>
-          <MagneticButton href="/founder" variant="secondary">
-            Founder
-          </MagneticButton>
-          <MagneticButton href="/coaches/advaith" variant="secondary">
-            Meet the Coach
+          <MagneticButton href="/coaches" variant="secondary">
+            Meet the Coaches
           </MagneticButton>
         </motion.div>
 

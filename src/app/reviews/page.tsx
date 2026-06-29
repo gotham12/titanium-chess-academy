@@ -52,8 +52,7 @@ export default function ReviewsPage() {
 
           <div className="mt-12 flex flex-wrap justify-center gap-4">
             <MagneticButton href="/register">Join the Academy</MagneticButton>
-            <MagneticButton href="/founder" variant="secondary">Founder</MagneticButton>
-            <MagneticButton href="/coaches/advaith" variant="secondary">Coach</MagneticButton>
+            <MagneticButton href="/coaches" variant="secondary">Meet the Coaches</MagneticButton>
           </div>
         </div>
       </section>

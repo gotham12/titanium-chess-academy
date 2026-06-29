@@ -85,14 +85,14 @@ export function HomeExtendedSections() {
               </div>
             </FadeIn>
             <FadeIn delay={0.08}>
-              <p className="text-sm uppercase tracking-[0.28em] text-accent">Lead Coach</p>
-              <h2 className="mt-4 font-display text-5xl font-extrabold md:text-6xl">{COACH.name}</h2>
+              <p className="text-sm uppercase tracking-[0.28em] text-accent">Coaches</p>
+              <h2 className="mt-4 font-display text-5xl font-extrabold md:text-6xl">Ansh & Advaith</h2>
               <p className="mt-4 text-xl text-chrome">
-                {COACH.rating} USCF · {COACH.experience} · {COACH.goal}
+                Founder and Head Coach · Coach · {COACH.rating} USCF
               </p>
               <p className="mt-6 text-lg leading-relaxed text-chrome">{COACH.bio[0]}</p>
               <div className="mt-8 flex flex-wrap gap-4">
-                <MagneticButton href="/coaches/advaith">Meet Advaith</MagneticButton>
+                <MagneticButton href="/coaches">Meet the Coaches</MagneticButton>
                 <MagneticButton href="/register" variant="secondary">Start enrollment</MagneticButton>
               </div>
             </FadeIn>

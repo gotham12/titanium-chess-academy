@@ -3,6 +3,21 @@
 import { motion, useMotionValue, useSpring } from "framer-motion";
 import { useEffect, useState } from "react";
 
+function PawnIcon({ className }: { className?: string }) {
+  return (
+    <svg
+      viewBox="0 0 24 32"
+      fill="currentColor"
+      className={className}
+      aria-hidden="true"
+    >
+      <path d="M12 2c-2.2 0-4 1.5-4 3.5 0 1.1.5 2.1 1.3 2.8-.9.6-1.8 1.5-2.3 2.7-.6 1.4-.5 3 .2 4.3.4.8 1 1.4 1.6 1.9-.3.4-.5.9-.5 1.4 0 1.3 1.5 2.4 3.7 2.4s3.7-1.1 3.7-2.4c0-.5-.2-1-.5-1.4.6-.5 1.2-1.1 1.6-1.9.7-1.3.8-2.9.2-4.3-.5-1.2-1.4-2.1-2.3-2.7.8-.7 1.3-1.7 1.3-2.8C16 3.5 14.2 2 12 2z" />
+      <rect x="5" y="26" width="14" height="3" rx="1" />
+      <rect x="3" y="29" width="18" height="3" rx="1.5" />
+    </svg>
+  );
+}
+
 export function CustomCursor() {
   const [visible, setVisible] = useState(false);
   const [hovering, setHovering] = useState(false);
@@ -10,8 +25,8 @@ export function CustomCursor() {
 
   const cursorX = useMotionValue(-100);
   const cursorY = useMotionValue(-100);
-  const ringX = useSpring(cursorX, { stiffness: 280, damping: 28, mass: 0.4 });
-  const ringY = useSpring(cursorY, { stiffness: 280, damping: 28, mass: 0.4 });
+  const pawnX = useSpring(cursorX, { stiffness: 320, damping: 26, mass: 0.35 });
+  const pawnY = useSpring(cursorY, { stiffness: 320, damping: 26, mass: 0.35 });
 
   useEffect(() => {
     const finePointer = window.matchMedia("(pointer: fine)").matches;
@@ -57,35 +72,19 @@ export function CustomCursor() {
   if (!visible) return null;
 
   return (
-    <>
+    <motion.div
+      className="pointer-events-none fixed top-0 left-0 z-[9999] text-white drop-shadow-[0_0_6px_rgba(255,255,255,0.55)]"
+      style={{ x: pawnX, y: pawnY, translateX: "-50%", translateY: "-100%" }}
+    >
       <motion.div
-        className="pointer-events-none fixed top-0 left-0 z-[9999] mix-blend-difference"
-        style={{ x: cursorX, y: cursorY, translateX: "-50%", translateY: "-50%" }}
+        animate={{
+          scale: clicking ? 0.82 : hovering ? 1.18 : 1,
+          rotate: clicking ? -8 : hovering ? 6 : 0,
+        }}
+        transition={{ type: "spring", stiffness: 420, damping: 22 }}
       >
-        <motion.div
-          animate={{
-            scale: clicking ? 0.75 : hovering ? 1.35 : 1,
-            rotate: hovering ? 45 : 0,
-          }}
-          transition={{ type: "spring", stiffness: 400, damping: 25 }}
-          className="relative h-3 w-3 rounded-sm bg-accent shadow-[0_0_12px_rgba(74,159,212,0.8)]"
-        />
+        <PawnIcon className="h-5 w-5" />
       </motion.div>
-
-      <motion.div
-        className="pointer-events-none fixed top-0 left-0 z-[9998]"
-        style={{ x: ringX, y: ringY, translateX: "-50%", translateY: "-50%" }}
-      >
-        <motion.div
-          animate={{
-            width: hovering ? 52 : clicking ? 36 : 44,
-            height: hovering ? 52 : clicking ? 36 : 44,
-            opacity: hovering ? 0.9 : 0.55,
-          }}
-          transition={{ type: "spring", stiffness: 300, damping: 22 }}
-          className="rounded-full border-2 border-accent/70"
-        />
-      </motion.div>
-    </>
+    </motion.div>
   );
 }
